@@ -14,7 +14,7 @@ export default function Contexto({children}) {
  
     const [DatosNew,dispatch] = useReducer(Reducer,datos); /* reducer es como para remplazar los valores del object */
 
-    console.log("line17",DatosNew);
+    // console.log("line17",DatosNew);
 
     const Provider = {
         DatosNew,
@@ -26,7 +26,7 @@ export default function Contexto({children}) {
         },
     }
 
-    console.log("line31",Provider);
+    // console.log("line31",Provider);
 
     return <AppContext.Provider value={Provider}>{children}</AppContext.Provider>
 }

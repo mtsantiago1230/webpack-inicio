@@ -1,23 +1,61 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import { useNavigate , Link } from 'react-router-dom';
+
+import {sendForm} from '../components/Peticiones'; 
+
+
+// import "regenerator-runtime"
+// const URL_LOGIN = "http://localhost/prueba/backend.php";
 
 function login()
 {
     const navigate = useNavigate();
     const clickbtn = () => navigate("/sistema/datos");
 
+    const refUser = useRef(null);
+    const refPass = useRef(null);
+
+    // const sendForm = async (url,data) => {
+    //     const resp = await fetch(url,{
+    //         method: "POST",
+    //         body: JSON.stringify(data),
+    //         headers: {
+    //             // "Content-Type" : "application/json",
+    //             "Content-Type" : "application/x-www-form-urlencoded",
+                
+    //         }
+    //     });
+
+    //     console.log("1",resp)
+    //     const json = await resp.json()
+    //     console.log("2",json)
+    // }
+
+    const envioForm = () => {
+        const data = {
+            user: refUser.current.value,
+            pass: refPass.current.value
+        };
+
+        console.log(data)
+
+        sendForm(data)        
+    }
+
     return (
         <div className="width20">
+            {/* <Peticiones/> */}
             <div className="padding2">
                 <span className="material-icons icon-session">person_pin</span>
-                <form>
+                <form onSubmit={envioForm}>
                     <div className="form-group">
-                        <input className="form-control" placeholder="Email"/>
+                        <input className="form-control" placeholder="Email" ref={refUser}/>
                     </div>
                     <div className="form-group">
-                        <input className="form-control" placeholder="Contraseña"/>
+                        <input className="form-control" placeholder="Contraseña" ref={refPass}/>
                     </div>
-                    <button type="button" className="btn btn-info" onClick={clickbtn}>
+                    {/* <button type="button" className="btn btn-info" onClick={clickbtn}> */}
+                    <button type="button" className="btn btn-info" onClick={envioForm}>
                         Iniciar Sesión
                     </button>
                 </form>

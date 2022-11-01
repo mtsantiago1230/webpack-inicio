@@ -1,6 +1,6 @@
 export default (state,action) => {
   
-    console.log(state,action)
+    // console.log(state,action)
 
     /*
         state = DatosNew[]
@@ -10,7 +10,7 @@ export default (state,action) => {
 
     const {type,payload} = action;
 
-    console.log(type,payload);
+    // console.log(type,payload);
 
     switch (type) {
         case 'SET_DATA':

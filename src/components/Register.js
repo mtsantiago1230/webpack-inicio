@@ -1,6 +1,9 @@
 import React from 'react';
 import { useNavigate, useLocation, Link, NavLink } from 'react-router-dom';
 
+const refUser = useRef(null);
+    const refPass = useRef(null);
+
 export default function register()
 {
     const navigate = useNavigate();
